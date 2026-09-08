@@ -21,11 +21,11 @@ export default function BulkAttendanceForm({
   const [error, setError] = useState('');
   const [pendingEntries, setPendingEntries] = useState(null);
   useEffect(() => {
-    if (propDeptId) {
-      setDepartmentId(propDeptId);
-      setSelectedUsers([]);
-    }
-  }, [propDeptId]);
+    if (!propDeptId || propDeptId === departmentId) return;
+
+    setDepartmentId(propDeptId);
+    setSelectedUsers([]);
+  }, [propDeptId, departmentId]);
 
   const FILL_CONFIRM_THRESHOLD = 10;
 
